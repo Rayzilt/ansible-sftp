@@ -104,7 +104,7 @@
   file:
     path: "{{ item[0].home }}/{{ item[1].name | default(item[1]) }}"
     owner: "{{ item[0].name }}"
-    group: "{{ item[0].group | default(item[0].name) }}"
+    group: "{{ item[0].group | {{ sftp_group_name }} | default(item[0].name) }}"
     mode: "{{ item[1].mode | default(0750) }}"
     state: directory
   with_nested:
